@@ -1,0 +1,36 @@
+.body{
+    padding: 100px 0px;
+}
+.breadCrumb{
+    padding: 12px 16px;
+    margin-top: 50px;
+    margin-bottom: 16px;
+    padding: 0px 15px;
+}
+.root{
+    display: flex;
+}
+.ProductContent{
+    display: flex;
+    flex-direction: column;
+    padding:0px 84px 0px 15px;
+}
+.rating{
+    display: flex;
+    justify-content: space-between;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+}
+.discription{
+    margin: 50px 0px;
+}
+.addToCart{
+    margin-top: 40px;
+}
+.img{
+    height: 645px;
+    width: 625px;
+}

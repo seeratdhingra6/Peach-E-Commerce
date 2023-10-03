@@ -1,0 +1,83 @@
+.body{
+    display: flex;
+    margin:0;
+}
+.sideBar{
+   width: 150px;
+    padding: 100px 40px;
+    max-width: 230px;
+    background-color: #f5f7fa;
+    display: flex;
+    flex-direction: column;
+    
+}
+.category{
+    list-style: none;
+    text-transform: capitalize;
+    margin-bottom: 50px;
+    color: #959595;
+    font-weight: 450;
+    li{
+        padding: 15px 0px 15px 20px;
+        &:hover{
+            transition: all 500ms ease 0s;
+            color: #fbb710; 
+            cursor: pointer;
+        }
+    }
+}
+.title{
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #242424;
+    margin-bottom: 30px;
+}
+.brands{
+    list-style: none;
+    text-transform: capitalize;
+    color: #959595;
+    font-weight: 450;
+    .brandTYpes{
+        padding: 15px 0px 15px 20px;
+        &:hover{
+            transition: all 500ms ease 0s;
+            color: #fbb710; 
+            cursor: pointer;
+        }
+    }
+}
+.showcaseArea{
+    padding: 100px 0px;
+    flex: 1;
+}
+.wrapper{
+    padding: 0px 15px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+.totalProducts{
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 400;
+}
+.products{
+    display: flex;
+    flex-wrap: wrap;
+}
+.productSortingBox{
+    display: flex;
+    flex: 1;
+    justify-content:flex-end;
+}
+.productSorting{
+    display: flex;
+    align-items: center;
+    margin-right: 86px;
+    height: 40px;
+    color: #959595;
+    width: 203px;
+    background-color:  #f5f7fa;
+    justify-content: space-around;
+}

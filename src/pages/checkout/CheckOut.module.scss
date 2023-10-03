@@ -1,0 +1,46 @@
+.body {
+  padding: 100px 0px;
+  display: flex;
+  flex-direction: column;
+}
+.heading {
+  margin-bottom: 30px;
+}
+.customerDetails {
+  display: flex;
+  flex-direction: column;
+  width: 718px;
+  gap: 15px;
+  input, textarea {
+    padding: 20px;
+    background-color: #f5f7fa;
+    border: none;
+    font-weight: 600;
+    &:focus-visible {
+      outline: 3px solid #80bdff;
+      box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+      cursor: pointer;
+    }
+  }
+}
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap:30px;
+}
+.userName {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  input {
+    width: 50%;
+  }
+}
+.information {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  input {
+    width: 50%;
+  }
+}

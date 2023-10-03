@@ -1,0 +1,87 @@
+.root {
+  padding: 60px 0px;
+  width: 320px;
+}
+.brandLogo {
+  width: 137px;
+  height: 55px;
+  margin: 0px 75px 90px;
+}
+.indicator {
+  height: 3px;
+  width: 30px;
+  background-color: #fff;
+}
+.navBar {
+  margin-bottom: 29px;
+}
+.listItem {
+  padding: 20px 0px;
+  list-style: none;
+  text-transform: uppercase;
+  font-weight: 550;
+  font-size: 14px;
+  display: flex;
+  gap: 45px;
+  color: #131212;
+  align-items: center;
+  &:hover {
+    color: #fab711;
+    .indicator{
+        background-color: #fab711;
+        animation: color-me-in 500ms;
+    }
+  }
+}
+@keyframes slidein {
+    from {
+      transform: translateX(0%);
+    }
+  
+    to {
+      transform: translateX(100%);
+    }
+}  
+.discountButton {
+  background-color: #fab711;
+  color: white;
+  width: 160px;
+  display: block;
+  border: none;
+  height: 55px;
+  font-size: 17px;
+  font-weight: 550;
+  padding: 0px 7px;
+  line-height: 56px;
+  margin: 0px 75px 100px;
+  &:hover {
+    transition: all 500ms ease 0s;
+    background-color: black;
+    cursor: pointer;
+  }
+}
+.serviceOptions {
+  margin: 0px 75px;
+}
+.serviceOptions li {
+  list-style: none;
+  font-weight: 500;
+  font-size: 17px;
+  transition: all 500ms ease 0s;
+  padding: 15px 0px;
+  color: #131212;
+  &:hover {
+    color: #fab711;
+  }
+}
+.icons {
+  margin: 0 10px 0 0;
+}
+.serviceOption {
+  display: flex;
+  flex-direction: row;
+}
+.totalAmount {
+  margin-left: 3px;
+  color: #aab7c5;
+}
