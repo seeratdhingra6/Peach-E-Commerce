@@ -1,25 +1,35 @@
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import classes from "./Product.module.scss";
-const Product = () => {
+import ProductsData from "../../data/home";
+import { useState } from "react";
+const Product = ({ cart, setCart }) => {
+  const [quantity, setQuantity] = useState(1);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const productId = queryParams.get("id");
+  const { price, productTitle, rating, backgroundImage } = ProductsData.find(
+    ({ id }) => id === Number(productId)
+  );
+  const handleCart = () => {
+    setCart({ ...cart, [productId]: quantity });
+  };
   return (
     <div className={classes.body}>
       <h5 className={classes.breadCrumb}>
-        HOME-FURNITURE-PRODUCT-MODERN CHAIR
+        HOME-FURNITURE-PRODUCT-{productTitle}
       </h5>
       <div className={classes.root}>
-        <img
-          className={classes.img}
-          src="https://preview.colorlib.com/theme/amado/img/product-img/pro-big-1.jpg"
-        ></img>
+        <img className={classes.img} src={backgroundImage}></img>
         <div className={classes.ProductContent}>
           <div className={classes.wrapper}>
-            <h5>$180</h5>
-            <h1>WHITE MODERN CHAIR</h1>
+            <div className={classes.line}></div>
+            <h5 className={classes.heading}>${price}</h5>
+            <h1 className={classes.productTitle}>{productTitle}</h1>
             <div className={classes.rating}>
-              <p>⭐⭐⭐⭐⭐</p>
-              <p>write a review</p>
+              <p>{rating}</p>
             </div>
-            <p>🟢in stock</p>
+            <p className={classes.stockCheck}>🟢in stock</p>
           </div>
           <p className={classes.discription}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam
@@ -27,8 +37,30 @@ const Product = () => {
             doloribus voluptate, tempore officiis sit consequuntur. Sed placeat
             esse veritatis natus.
           </p>
-          <input type="number" value={1} />
-          <button className={classes.addToCart}>Add To Cart</button>
+          <div className={classes.quantity}>
+            <div className={classes.totalAmount}>
+              {quantity}
+              <button
+                onClick={() => {
+                  setQuantity(quantity + 1);
+                }}
+              >
+                +
+              </button>
+              <button
+                onClick={() => {
+                  {
+                    quantity > 1 && setQuantity(quantity - 1);
+                  }
+                }}
+              >
+                -
+              </button>
+            </div>
+          </div>
+          <button onClick={handleCart} className={classes.addToCart}>
+            Add To Cart
+          </button>
         </div>
       </div>
     </div>

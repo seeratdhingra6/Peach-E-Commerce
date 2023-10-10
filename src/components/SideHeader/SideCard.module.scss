@@ -1,47 +1,64 @@
 .root {
   padding: 60px 0px;
   width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .brandLogo {
-  width: 137px;
-  height: 55px;
-  margin: 0px 75px 90px;
+  // width: 137px;
+  height: 30px;
+  margin-bottom: 50px;
+  // transform: scale(1);
 }
 .indicator {
   height: 3px;
   width: 30px;
   background-color: #fff;
+  position: absolute;
+  left: -70px;
 }
 .navBar {
   margin-bottom: 29px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
 }
 .listItem {
-  padding: 20px 0px;
+  padding: 20px 0px 20px 70px;
   list-style: none;
   text-transform: uppercase;
   font-weight: 550;
   font-size: 14px;
   display: flex;
   gap: 45px;
-  color: #131212;
   align-items: center;
+  position: relative;
   &:hover {
-    color: #fab711;
-    .indicator{
-        background-color: #fab711;
-        animation: color-me-in 500ms;
+    .indicator {
+      background-color: #fab711;
+      animation: slidein 500ms;
+      // position: absolute;
+    }
+  }
+  a {
+    text-decoration: none;
+    color: #131212;
+    &:hover {
+      transition: all 500ms ease 0s;
+      color: #fab711;
     }
   }
 }
 @keyframes slidein {
-    from {
-      transform: translateX(0%);
-    }
-  
-    to {
-      transform: translateX(100%);
-    }
-}  
+  from{
+    width: 0px;
+  }
+  to {
+    width: 30px;
+  }
+}
 .discountButton {
   background-color: #fab711;
   color: white;
@@ -54,6 +71,9 @@
   padding: 0px 7px;
   line-height: 56px;
   margin: 0px 75px 100px;
+  &:focus {
+    outline: none;
+  }
   &:hover {
     transition: all 500ms ease 0s;
     background-color: black;

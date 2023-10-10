@@ -65,6 +65,14 @@
 .products{
     display: flex;
     flex-wrap: wrap;
+    a {
+        text-decoration: none;
+        color: #131212;
+        &:hover {
+          transition: all 500ms ease 0s;
+          color: #fab711;
+        }
+      }
 }
 .productSortingBox{
     display: flex;
@@ -80,4 +88,7 @@
     width: 203px;
     background-color:  #f5f7fa;
     justify-content: space-around;
+}
+.selectedCategory{
+    color: #fbb710;
 }

@@ -34,9 +34,11 @@
     gap:12px;
     margin: 12px 0px;
     align-items: center;
+    width: 720px;
 }
 .productImage{
     grid-column:1/2;
+    width: 180px;
 }
 .productTitle{
     grid-column:2/3;

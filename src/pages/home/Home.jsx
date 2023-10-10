@@ -1,9 +1,11 @@
 import React from "react";
 import classes from "./Home.module.scss";
 import ProductCard from "../../components/ProductCard/ProductCard";
+import Footer from "../../components/footer/Footer";
+import ProductsData from "../../data/home";
 const Home = () => {
   return (
-    <>
+    <div className={classes.body}>
       <div className={classes.column1}>
         <ProductCard
           price={180}
@@ -11,8 +13,6 @@ const Home = () => {
           backgroundImage={
             "https://preview.colorlib.com/theme/amado/img/bg-img/1.jpg.webp"
           }
-          height={400}
-          width={400}
         />
         <ProductCard
           price={18}
@@ -20,8 +20,6 @@ const Home = () => {
           backgroundImage={
             "https://preview.colorlib.com/theme/amado/img/bg-img/5.jpg.webp"
           }
-          height={400}
-          width={400}
         />
         <ProductCard
           price={318}
@@ -29,8 +27,6 @@ const Home = () => {
           backgroundImage={
             "https://preview.colorlib.com/theme/amado/img/bg-img/8.jpg.webp"
           }
-          height={480}
-          width={400}
         />
       </div>
       <div className={classes.column2}>
@@ -40,8 +36,6 @@ const Home = () => {
           backgroundImage={
             "https://preview.colorlib.com/theme/amado/img/bg-img/2.jpg.webp"
           }
-          height={568}
-          width={400}
         />
         <ProductCard
           price={320}
@@ -49,8 +43,6 @@ const Home = () => {
           backgroundImage={
             "https://preview.colorlib.com/theme/amado/img/bg-img/6.jpg.webp"
           }
-          height={356}
-          width={400}
         />
         <ProductCard
           price={318}
@@ -58,8 +50,6 @@ const Home = () => {
           backgroundImage={
             "https://preview.colorlib.com/theme/amado/img/bg-img/9.jpg.webp"
           }
-          height={356}
-          width={400}
         />
       </div>
       <div className={classes.column3}>
@@ -69,8 +59,6 @@ const Home = () => {
           backgroundImage={
             "	https://preview.colorlib.com/theme/amado/img/bg-img/3.jpg"
           }
-          height={356}
-          width={400}
         />
         <ProductCard
           price={180}
@@ -78,8 +66,6 @@ const Home = () => {
           backgroundImage={
             "https://preview.colorlib.com/theme/amado/img/bg-img/4.jpg"
           }
-          height={356}
-          width={400}
         />
         <ProductCard
           price={318}
@@ -87,11 +73,9 @@ const Home = () => {
           backgroundImage={
             "https://preview.colorlib.com/theme/amado/img/bg-img/7.jpg"
           }
-          height={568}
-          width={400}
         />
       </div>
-    </>
+    </div>
   );
 };
 export default Home;

@@ -1,55 +1,112 @@
 import React from "react";
+import { useState } from "react";
 import PriceCard from "../../components/priceCard/PriceCard";
 import classes from "./Shop.module.scss";
+import productsData from "../../data/home";
+import { Link } from "react-router-dom";
+const categories = [
+  "chairs",
+  "beds",
+  "accesories",
+  "furniture",
+  "home deco",
+  "dressings",
+  "tables",
+];
+const brands = ["Amado", "Ikea", "Furniture Inc", "The Factory", "Art Deco"];
+
 const Shop = () => {
+  const [activeCategory, setActiveCategory] = useState("chairs");
+  const [filter, setFilter] = useState("trending");
+  const [activeBrands, setActiveBrands] = useState([]);
+  const displayData = productsData.filter(({ category, brand }) => {
+    return activeBrands.length > 0
+      ? activeCategory === category && activeBrands.includes(brand)
+      : activeCategory === category;
+  });
+  if (filter === "newest") {
+    displayData.sort((a, b) => {
+      if (a.time > b.time) {
+        return -1;
+      } else {
+        return 1;
+      }
+    });
+  }
+  if (filter === "rating") {
+    displayData.sort((a, b) => {
+      if (a.rating > b.rating) {
+        return -1;
+      } else {
+        return 1;
+      }
+    });
+  }
+
+  const setBrands = (event, givenBrand) => {
+    if (event.target.checked) {
+      setActiveBrands([...activeBrands, givenBrand]);
+    } else {
+      const filteredBrands = activeBrands.filter(
+        (brand) => brand !== givenBrand
+      );
+      setActiveBrands(filteredBrands);
+    }
+  };
+
   return (
     <div className={classes.body}>
       <div className={classes.sideBar}>
         <ul className={classes.category}>
           <h5 className={classes.title}>categories</h5>
-          <li>chairs</li>
-          <li>beds</li>
-          <li>accesories</li>
-          <li>furniture</li>
-          <li>home deco</li>
-          <li>dressings</li>
-          <li>tables</li>
+          {categories.map((category) => {
+            return activeCategory === category ? (
+              <li
+                onClick={() => setActiveCategory(category)}
+                className={classes.selectedCategory}
+                key={category}
+              >
+                {category}
+              </li>
+            ) : (
+              <li onClick={() => setActiveCategory(category)} key={category}>
+                {category}
+              </li>
+            );
+          })}
         </ul>
         <div className={classes.brands}>
           <h5 className={classes.title}>brands</h5>
-          <div className={classes.brandTYpes}>
-            <input type="checkbox" id="amado" name="amado" checked />
-            <label for="amado">Amado</label>
-          </div>
-
-          <div className={classes.brandTYpes}>
-            <input type="checkbox" id="ikea" name="ikea" />
-            <label for="ikea">Ikea</label>
-          </div>
-          <div className={classes.brandTYpes}>
-            <input type="checkbox" id="furniture inc" name="furniture inc" />
-            <label for="furniture inc">Furniture Inc</label>
-          </div>
-          <div className={classes.brandTYpes}>
-            <input type="checkbox" id="the factory" name="the factory" />
-            <label for="the factory">The Factory</label>
-          </div>
-          <div className={classes.brandTYpes}>
-            <input type="checkbox" id="artdeco" name="artdeco" />
-            <label for="artdeco">Art deco</label>
-          </div>
+          {brands.map((brand) => {
+            return (
+              <div key={brand} className={classes.brandTYpes}>
+                <input
+                  onChange={(event) => setBrands(event, brand)}
+                  type="checkbox"
+                  id={brand}
+                  name={brand}
+                  checked={activeBrands.includes(brand)}
+                />
+                <label for={brand}>{brand}</label>
+              </div>
+            );
+          })}
         </div>
       </div>
       <div className={classes.showcaseArea}>
         <div className={classes.wrapper}>
           <div className={classes.totalProducts}>
-            <h5>showing 1-8 of 25</h5>
+            <h5>showing 1-9 of 25</h5>
           </div>
           <div className={classes.productSortingBox}>
             <div className={classes.productSorting}>
               <label for="sortBySelection">Sort by</label>
 
-              <select name="sortBySelection" id="sortBySelection">
+              <select
+                onChange={(event) => setFilter(event.target.value)}
+                name="sortBySelection"
+                id="sortBySelection"
+              >
                 <option value="trending">Trending</option>
                 <option value="newest">Newest</option>
                 <option value="rating">Rating</option>
@@ -58,36 +115,18 @@ const Shop = () => {
           </div>
         </div>
         <div className={classes.products}>
-          <PriceCard
-            price={180}
-            name="Modern Chair"
-            productImage="	https://preview.colorlib.com/theme/amado/img/product-img/product1.jpg"
-          />
-          <PriceCard
-            price={50}
-            name="Flower vase"
-            productImage="	https://preview.colorlib.com/theme/amado/img/product-img/product2.jpg"
-          />
-          <PriceCard
-            price={34}
-            name="Modern Stool"
-            productImage="	https://preview.colorlib.com/theme/amado/img/product-img/product3.jpg"
-          />
-          <PriceCard
-            price={50}
-            name="Modern Chair"
-            productImage="	https://preview.colorlib.com/theme/amado/img/product-img/product4.jpg"
-          />
-          <PriceCard
-            price={50}
-            name="Modern Chair"
-            productImage="	https://preview.colorlib.com/theme/amado/img/product-img/product5.jpg"
-          />
-          <PriceCard
-            price={50}
-            name="Modern Chair"
-            productImage="	https://preview.colorlib.com/theme/amado/img/product-img/product6.jpg"
-          />
+          {displayData.map(({ id, price, productTitle, backgroundImage }) => {
+            return (
+              <Link to={`/product?id=${id}`}>
+                <PriceCard
+                  key={id}
+                  price={price}
+                  name={productTitle}
+                  productImage={backgroundImage}
+                />
+              </Link>
+            );
+          })}
         </div>
       </div>
     </div>

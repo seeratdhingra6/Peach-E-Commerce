@@ -1,29 +1,33 @@
 import React from "react";
 import classes from "./SideCard.module.scss";
+import logo from "../../images/Peach-logos_black.png";
+import { Link } from "react-router-dom";
 const SideCard = () => {
   return (
     <div className={classes.root}>
-      <p className={classes.brandLogo}>peach</p>
+      <Link to="/">
+        <img className={classes.brandLogo} src={logo}></img>
+      </Link>
       <ul className={classes.navBar}>
         <li className={classes.listItem}>
           <div className={classes.indicator} />
-          <span>Home</span>
+          <Link to="/">Home</Link>
         </li>
         <li className={classes.listItem}>
           <div className={classes.indicator} />
-          <span>Shop</span>
+          <Link to="/shop">Shop</Link>
         </li>
         <li className={classes.listItem}>
           <div className={classes.indicator} />
-          <span>Product</span>
+          <Link to="/product">Product</Link>
         </li>
         <li className={classes.listItem}>
           <div className={classes.indicator} />
-          <span>Cart</span>
+          <Link to="/cart">Cart</Link>
         </li>
         <li className={classes.listItem}>
           <div className={classes.indicator} />
-          <span>Checkout</span>
+          <Link to="/checkout">Checkout</Link>
         </li>
       </ul>
       <button className={classes.discountButton}>%Discount%</button>

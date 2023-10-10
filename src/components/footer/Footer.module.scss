@@ -1,0 +1,48 @@
+.body {
+  background-color: #252525;
+  padding: 80px 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.root {
+  color: white;
+  display: flex;
+  width: 1140px;
+  padding: 0px 40px;
+  align-items: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  //   width: 380px;
+  .logo {
+    height: 45px;
+  }
+  .copyright {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 10px;
+  }
+}
+.navBar {
+  list-style: none;
+  display: flex;
+  flex: 1;
+  gap: 60px;
+  justify-content: flex-end;
+  text-transform: uppercase;
+  font-weight: 500;
+
+  a {
+    text-decoration: none;
+    color: white;
+    &:hover {
+      color: #fbb710;
+      transition: all 500ms ease 0s;
+      cursor: pointer;
+    }
+  }
+}
