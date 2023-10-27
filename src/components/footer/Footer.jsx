@@ -3,6 +3,7 @@ import classes from "./Footer.module.scss";
 import logo from "../../images/Peach-logos_transparent.png";
 import { Link } from "react-router-dom";
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <div className={classes.body}>
       <div className={classes.root}>
@@ -12,7 +13,7 @@ const Footer = () => {
             <img className={classes.logo} src={logo}></img>
           </Link>
           <p className={classes.copyright}>
-            copyright@2023 All rights reserved|
+            copyright@{currentYear}All rights reserved|
           </p>
         </div>
         <ul className={classes.navBar}>

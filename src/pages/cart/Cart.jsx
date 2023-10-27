@@ -2,7 +2,9 @@ import React from "react";
 import Checkout from "../../components/checkoutForm/CheckoutBill";
 import classes from "./Cart.module.scss";
 import ProductsData from "../../data/home";
+import { useNavigate } from "react-router-dom";
 const Cart = ({ cart, setCart }) => {
+  const navigate = useNavigate();
   const cartProductIds = Object.keys(cart);
 
   const cartProducts = cartProductIds.map((cartProductId) => {
@@ -23,7 +25,7 @@ const Cart = ({ cart, setCart }) => {
           </div>
           <div>
             {cartProducts.map(
-              ({ productTitle, price, backgroundImage, id }) => {
+              ({ productTitle, price, backgroundImage, id, quantity }) => {
                 return (
                   <div className={classes.productSpecsDetails} key={id}>
                     <img
@@ -32,29 +34,42 @@ const Cart = ({ cart, setCart }) => {
                     ></img>
                     <h5 className={classes.productTitle}>{productTitle}</h5>
                     <p className={classes.productRate}>${price}</p>
-                    <p className={classes.quantity}>
-                      <button
-                        onClick={() =>
-                          cart[id] > 1 &&
-                          setCart({ ...cart, [id]: cart[id] - 1 })
-                        }
-                      >
-                        -
-                      </button>
-                      {cart[id]}
-                      <button
-                        onClick={() => setCart({ ...cart, [id]: cart[id] + 1 })}
-                      >
-                        +
-                      </button>
-                    </p>
+                    <div className={classes.quantity}>
+                      <div className={classes.totalAmount}>
+                        <span className={classes.buttonContainer}>
+                          <span className={classes.quantityText}>Qty</span>
+                          <button
+                            onClick={() =>
+                              cart[id] > 1 &&
+                              setCart({ ...cart, [id]: cart[id] - 1 })
+                            }
+                          >
+                            -
+                          </button>
+                          <span className={classes.Quantity}>{quantity}</span>
+
+                          {cart[id]}
+                          <button
+                            onClick={() =>
+                              setCart({ ...cart, [id]: cart[id] + 1 })
+                            }
+                          >
+                            +
+                          </button>
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 );
               }
             )}
           </div>
         </div>
-        <Checkout cart={cart} setCart={setCart} />
+        <Checkout
+          cart={cart}
+          setCart={setCart}
+          onClickHandler={() => navigate("/checkout")}
+        />
       </div>
     </div>
   );

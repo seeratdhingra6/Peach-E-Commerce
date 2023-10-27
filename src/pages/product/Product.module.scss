@@ -1,93 +1,158 @@
-.body{
-    padding: 100px 0px;
+.body {
+  padding: 100px 0px;
 }
-.breadCrumb{
-    padding: 12px 16px;
-    margin-top: 50px;
-    margin-bottom: 16px;
-    // padding: 0px 15px;
-    font-size: 14px;
-    font-weight: 450;
+.breadCrumb {
+  padding: 12px 16px;
+  margin-top: 50px;
+  margin-bottom: 16px;
+  // padding: 0px 15px;
+  font-size: 14px;
+  font-weight: 450;
+  text-transform: uppercase;
 }
-.root{
-    display: flex;
+.root {
+  display: flex;
 }
-.ProductContent{
-    display: flex;
-    flex-direction: column;
-    padding:0px 84px 0px 15px;
+.ProductContent {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 84px 0px 15px;
 }
-.line{
-    width: 80px;
-    height: 3px;
-    background-color: #fbb710;
-    display: block;
+.activeCrumbTitle {
+  color: #6b6b6b;
 }
-.img{
-    padding: 0px 15px;
+.line {
+  width: 80px;
+  height: 3px;
+  background-color: #fbb710;
+  display: block;
 }
-.heading{
-    font-size: 24px;
-    font-weight: 550;
-    color: #fbb710;
-    // margin-bottom: 10px;
+.img {
+  padding: 0px 15px;
 }
-.productTitle{
-    font-size: 30px;
-    font-weight: 500;
+.heading {
+  font-size: 24px;
+  font-weight: 550;
+  color: #fbb710;
+  // margin-bottom: 10px;
 }
-.rating{
-    display: flex;
-    justify-content: space-between;
+.productTitle {
+  font-size: 30px;
+  font-weight: 500;
 }
-.review{
-    color: #6b6b6b;
-    font-size: 14px;
+.rating {
+  display: flex;
+  justify-content: space-between;
 }
-.wrapper{
-    display: flex;
-    flex-direction: column;
-    gap:15px;
+.review {
+  color: #6b6b6b;
+  font-size: 14px;
 }
-.discription{
-    margin: 50px 0px;
-    color: #6b6b6b;
-    font-weight: 500;
-    font-size: 15px;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
-.quantity{
-    width: 100%;
-    display: flex;
-    
+.discription {
+  margin: 50px 0px;
+  color: #6b6b6b;
+  font-weight: 500;
+  font-size: 15px;
 }
-.totalAmount{
-    width: 155px;
-    height: 40px;
-    background-color: #f5f7fa;
-    color: #6b6b6b;
+.quantity {
+  display: flex;
+  position: relative;
+  left: 10px;
+}
+.totalAmount {
+  width: 135px;
+  height: 40px;
+  background-color: #f5f7fa;
+  color: #6b6b6b;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 15px;
+  font-weight: 500;
+}
+.addToCart {
+  margin-top: 40px;
+  width: 310px;
+  height: 80px;
+  background-color: #fbb710;
+  padding: 0px 7px;
+  color: white;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  &:hover {
+    background-color: black;
+    transition: all 500ms ease 0s;
+    cursor: pointer;
+  }
+}
+.stockCheck {
+  font-size: 12px;
+  color: #6b6b6b;
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+}
+.availableStock {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: #20d34a;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+.img {
+  height: 645px;
+  width: 625px;
+}
+.reverse {
+  transform: rotate(180deg);
+}
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  button {
     border: none;
+    background-color: transparent;
+    height: 15px;
+  }
 }
-.addToCart{
-    margin-top: 40px;
-    width: 310px;
-    height: 80px;
-    background-color: #fbb710;
-    padding: 0px 7px;
-    color: white;
-    border: none;
-    font-size: 18px;
-    font-weight: 500;
-    &:hover{
-        background-color: black;
-        transition: all 500ms ease 0s;
-        cursor: pointer;
-    }
+
+.popup {
+  height: 40px;
+  width: 200px;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  background-color: #fab711;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  animation: 0.5s slide-right;
 }
-.stockCheck{
-    font-size: 12px;
-    color: #6b6b6b;
+
+@keyframes slide-right {
+  from {
+    margin-left: -100%;
+  }
+  to {
+    margin-left: 0%;
+  }
 }
-.img{
-    height: 645px;
-    width: 625px;
+.added {
+  margin-top: 2px;
+}
+.popupMessage {
+  font-size: 20px;
+  line-height: 16px;
+  color: white;
+  text-transform: capitalize;
+  font-weight: 500;
 }

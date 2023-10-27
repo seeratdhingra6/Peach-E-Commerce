@@ -48,4 +48,30 @@
 }
 .quantity{
     grid-column:4/5;
+    display: flex;
+    width: 100%;
+    
+}
+.totalAmount{
+    width: 135px;
+    height: 40px;
+    background-color: #f5f7fa;
+    color: #6b6b6b;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   font-weight: 500;
+}
+.buttonContainer{
+    display: flex;
+    padding:0px 15px;
+    width: 100%;
+    justify-content: space-between;
+    button{
+        border: none;
+        background-color: transparent;
+        font-size: 15px;
+        font-weight: 800;
+    }
 }

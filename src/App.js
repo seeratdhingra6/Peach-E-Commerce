@@ -10,29 +10,30 @@ import CheckOut from "./pages/checkout/CheckOut";
 import Footer from "./components/footer/Footer";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
+import OrderConfirmed from "./pages/orderconfirmed/OrderConfirmed";
 
 function App() {
   const [cart, setCart] = useState({});
-  // const router = createBrowserRouter([
-  //   {
-  //     path: "/",
-  //     element: <Home />,
-  //   },
-  //   {
-  //     path: "/shop",
-  //     element: <Shop />,
-  //   },
-  // ]);
+  const [quantity, setQuantity] = useState(1);
   const { pathname } = useLocation();
+  console.log("DEBUG cart", cart);
   return (
     <div className={classes.App}>
       <div className={classes.root}>
-        <SideCard />
+        <SideCard cart={cart} setCart={setCart} />
         {pathname === "/" && <Home />}
-        {pathname === "/shop" && <Shop />}
-        {pathname === "/product" && <Product cart={cart} setCart={setCart} />}
+        {pathname === "/shop" && <Shop cart={cart} setCart={setCart} />}
+        {pathname === "/product" && (
+          <Product
+            quantity={quantity}
+            setQuantity={setQuantity}
+            cart={cart}
+            setCart={setCart}
+          />
+        )}
         {pathname === "/cart" && <Cart cart={cart} setCart={setCart} />}
         {pathname === "/checkout" && <CheckOut cart={cart} setCart={setCart} />}
+        {pathname === "/orderconfirmed" && <OrderConfirmed />}
       </div>
       <Footer />
     </div>

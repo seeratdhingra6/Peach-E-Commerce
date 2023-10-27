@@ -50,6 +50,18 @@
     padding: 100px 0px;
     flex: 1;
 }
+.sortBySelection{
+    border: none;
+    background-color:#f5f7fa ;
+    &:focus-visible{
+        outline: none;
+    }
+    option{
+        padding: 10px;
+        background-color: #f5f7fa;
+        
+    }
+}
 .wrapper{
     padding: 0px 15px;
     margin-bottom: 40px;

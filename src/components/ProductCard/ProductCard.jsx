@@ -1,10 +1,11 @@
 import React from "react";
 import classes from "./ProductCard.module.scss";
 import { Link } from "react-router-dom";
-const ProductCard = ({ price, productTitle, backgroundImage }) => {
+
+const ProductCard = ({ price, productTitle, backgroundImage, id }) => {
   return (
-    <Link to="/product">
-      <div className={classes.wrapper}>
+    <div className={classes.wrapper}>
+      <Link to={`/product?id=${id}`}>
         <img
           className={classes.productImage}
           src={backgroundImage}
@@ -16,8 +17,8 @@ const ProductCard = ({ price, productTitle, backgroundImage }) => {
           <div className={classes.startingRate}>From ${price}</div>
           <h4 className={classes.productTitle}>{productTitle}</h4>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 export default ProductCard;

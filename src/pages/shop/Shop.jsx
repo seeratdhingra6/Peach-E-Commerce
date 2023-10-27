@@ -3,7 +3,7 @@ import { useState } from "react";
 import PriceCard from "../../components/priceCard/PriceCard";
 import classes from "./Shop.module.scss";
 import productsData from "../../data/home";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const categories = [
   "chairs",
   "beds",
@@ -14,8 +14,8 @@ const categories = [
   "tables",
 ];
 const brands = ["Amado", "Ikea", "Furniture Inc", "The Factory", "Art Deco"];
-
-const Shop = () => {
+const Shop = ({ cart, setCart }) => {
+  const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState("chairs");
   const [filter, setFilter] = useState("trending");
   const [activeBrands, setActiveBrands] = useState([]);
@@ -103,6 +103,7 @@ const Shop = () => {
               <label for="sortBySelection">Sort by</label>
 
               <select
+                className={classes.sortBySelection}
                 onChange={(event) => setFilter(event.target.value)}
                 name="sortBySelection"
                 id="sortBySelection"
@@ -115,18 +116,28 @@ const Shop = () => {
           </div>
         </div>
         <div className={classes.products}>
-          {displayData.map(({ id, price, productTitle, backgroundImage }) => {
-            return (
-              <Link to={`/product?id=${id}`}>
-                <PriceCard
-                  key={id}
-                  price={price}
-                  name={productTitle}
-                  productImage={backgroundImage}
-                />
-              </Link>
-            );
-          })}
+          {displayData.map(
+            ({ id, price, productTitle, backgroundImage, rating }) => {
+              return (
+                <div
+                  onClick={(event) => {
+                    navigate(`/product?id=${id}`);
+                  }}
+                >
+                  <PriceCard
+                    key={id}
+                    price={price}
+                    name={productTitle}
+                    productImage={backgroundImage}
+                    rating={rating}
+                    id={id}
+                    cart={cart}
+                    setCart={setCart}
+                  />
+                </div>
+              );
+            }
+          )}
         </div>
       </div>
     </div>

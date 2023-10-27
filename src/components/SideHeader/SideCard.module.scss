@@ -6,17 +6,15 @@
   align-items: center;
 }
 .brandLogo {
-  // width: 137px;
   height: 30px;
   margin-bottom: 50px;
-  // transform: scale(1);
 }
 .indicator {
   height: 3px;
   width: 30px;
   background-color: #fff;
   position: absolute;
-  left: -70px;
+  left: 0px;
 }
 .navBar {
   margin-bottom: 29px;
@@ -38,15 +36,21 @@
   &:hover {
     .indicator {
       background-color: #fab711;
-      animation: slidein 500ms;
-      // position: absolute;
+      animation: 0.5s slide-right;
+    }
+  }
+  @keyframes slide-right {
+    from {
+      margin-left: -100%;
+    }
+    to {
+      margin-left: 0%;
     }
   }
   a {
     text-decoration: none;
     color: #131212;
     &:hover {
-      transition: all 500ms ease 0s;
       color: #fab711;
     }
   }
@@ -59,29 +63,10 @@
     width: 30px;
   }
 }
-.discountButton {
-  background-color: #fab711;
-  color: white;
-  width: 160px;
-  display: block;
-  border: none;
-  height: 55px;
-  font-size: 17px;
-  font-weight: 550;
-  padding: 0px 7px;
-  line-height: 56px;
-  margin: 0px 75px 100px;
-  &:focus {
-    outline: none;
-  }
-  &:hover {
-    transition: all 500ms ease 0s;
-    background-color: black;
-    cursor: pointer;
-  }
-}
+
 .serviceOptions {
   margin: 0px 75px;
+  width:160px;
 }
 .serviceOptions li {
   list-style: none;

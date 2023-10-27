@@ -1,0 +1,54 @@
+.body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    // background-color:#302c2f;
+    background-color: #f9b690;
+    background-image: linear-gradient(270deg, #f9b690 0%, #f3da9c 100%);
+    
+
+
+}
+.root{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.OrderConfirmedImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.logo {
+    animation: slide 1.25s ease-out; 
+    height: 200px;
+    width: 200px;
+    text-transform: capitalize;
+  
+}
+
+.text {
+    white-space: nowrap; 
+    animation: slide 1.25s ease-out; 
+    font-size: 24px;
+    font-weight: 700;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(-260%);
+    }
+    
+    100% {
+        transform: translateX(0%); 
+    }
+}
+
+
+
+

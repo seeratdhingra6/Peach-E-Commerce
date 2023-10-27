@@ -2,7 +2,9 @@ import React from "react";
 import classes from "./CheckoutBill.module.scss";
 import ProductsData from "../../data/home";
 import { useState } from "react";
-const CheckoutBill = ({ cart, setCart }) => {
+import { Link } from "react-router-dom";
+// import OrderConfirmed from "../orderconfimed/OrderConfirmed";
+const CheckoutBill = ({ cart, onClickHandler }) => {
   const cartProductIds = Object.keys(cart);
   const subtotalPrices = cartProductIds.map((cartProductId) => {
     return (
@@ -29,7 +31,15 @@ const CheckoutBill = ({ cart, setCart }) => {
         <p>Total:</p>
         <p>${subTotal}</p>
       </div>
-      <button className={classes.CheckOut}>Checkout</button>
+      {/* <Link to="/orderconfirmed"> */}
+      <button
+        onClick={onClickHandler}
+        type="submit"
+        className={classes.CheckOut}
+      >
+        Checkout
+      </button>
+      {/* </Link> */}
     </div>
   );
 };

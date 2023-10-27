@@ -7,7 +7,7 @@ const ProductsData = [
       "https://preview.colorlib.com/theme/amado/img/bg-img/1.jpg.webp",
     category: "chairs",
     time: 1000,
-    rating: 1,
+    rating: 5,
     brand: "Amado",
   },
   {
@@ -18,30 +18,19 @@ const ProductsData = [
       "https://preview.colorlib.com/theme/amado/img/bg-img/5.jpg.webp",
     category: "chairs",
     time: 2000,
-    rating: 2,
+    rating: 4,
     brand: "Ikea",
   },
   {
-    id: 3,
-    price: "318",
-    productTitle: "Modern Rocking Chair",
+    id: 7,
+    price: "180",
+    productTitle: "Modern Chair",
     backgroundImage:
-      "https://preview.colorlib.com/theme/amado/img/bg-img/8.jpg.webp",
+      "https://preview.colorlib.com/theme/amado/img/bg-img/3.jpg",
     category: "chairs",
-    time: 3000,
+    time: 7000,
     rating: 5,
     brand: "Art Deco",
-  },
-  {
-    id: 4,
-    price: "180",
-    productTitle: "Minimalistic plant pot",
-    backgroundImage:
-      "https://preview.colorlib.com/theme/amado/img/bg-img/2.jpg.webp",
-    category: "chairs",
-    time: 4000,
-    rating: 3,
-    brand: "Furniture Inc",
   },
   {
     id: 5,
@@ -88,6 +77,17 @@ const ProductsData = [
     brand: "Ikea",
   },
   {
+    id: 3,
+    price: "318",
+    productTitle: "Modern Rocking Chair",
+    backgroundImage:
+      "https://preview.colorlib.com/theme/amado/img/bg-img/8.jpg.webp",
+    category: "chairs",
+    time: 3000,
+    rating: 5,
+    brand: "Art Deco",
+  },
+  {
     id: 9,
     price: "318",
     productTitle: "Metallic Chair",
@@ -97,6 +97,17 @@ const ProductsData = [
     time: 9000,
     rating: 4,
     brand: "The Factory",
+  },
+  {
+    id: 4,
+    price: "180",
+    productTitle: "Minimalistic plant pot",
+    backgroundImage:
+      "https://preview.colorlib.com/theme/amado/img/bg-img/2.jpg.webp",
+    category: "chairs",
+    time: 4000,
+    rating: 3,
+    brand: "Furniture Inc",
   },
   {
     id: 10,
