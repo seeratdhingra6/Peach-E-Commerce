@@ -3,7 +3,6 @@ import classes from "./CheckoutBill.module.scss";
 import ProductsData from "../../data/home";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// import OrderConfirmed from "../orderconfimed/OrderConfirmed";
 const CheckoutBill = ({ cart, onClickHandler }) => {
   const cartProductIds = Object.keys(cart);
   const subtotalPrices = cartProductIds.map((cartProductId) => {

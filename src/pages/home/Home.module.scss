@@ -4,3 +4,21 @@
     max-width: 1200px;
     gap: 0px;
 }
+@media screen and (max-width:1200px){
+    .body{
+        grid-template-columns: repeat(3,1fr);
+width: 100%;
+    }
+}
+@media screen and (max-width:768px){
+    .body{
+        grid-template-columns: 1fr;
+       
+    }
+}
+@media screen and (max-width:576px){
+    .body{
+        grid-template-columns: 1fr;
+      
+    }
+}

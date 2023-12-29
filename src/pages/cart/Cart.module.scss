@@ -1,77 +1,133 @@
-.body{
-    display: flex;
-    padding: 100px 0px;
+@import "src/styles/breakpoints";
+
+// Todo: can we call hook conditionally in react
+
+.body {
+  display: flex;
+  padding: 100px 0px;
+  flex-direction: column;
+  padding: 15px;
+  margin: auto;
+  min-height: 85vh;
+  @include Large {
+    width: calc(100vw - 200px);
+  }
+}
+.wrapper {
+  display: flex;
+  gap: 30px;
+  @include ExtraLarge {
     flex-direction: column;
+  }
 }
-.wrapper{
-    display: flex;
-    gap:30px;
+.heading {
+  margin: 0px 0px 30px;
+  font-size: 30px;
+  font-weight: 500;
+  text-align: center;
+  @include Medium {
+    font-size: 24px;
+  }
 }
-.heading{
-    margin: 0px 0px 30px;
-    font-size: 30px;
-    font-weight: 500;
+.root {
+  display: flex;
+  flex-direction: column;
 }
-.root{
-    display: flex;
-    flex-direction: column;
-}
-.productSpecs{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    width: 720px;
-    padding: 12px 0px;
-    background-color: #f5f7fa;
-    gap: 12px;
-}
-.tableHeading{
-   font-size: 12px;
-    font-weight: 600;
-}
-.productSpecsDetails{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap:12px;
-    margin: 12px 0px;
-    align-items: center;
-    width: 720px;
-}
-.productImage{
-    grid-column:1/2;
-    width: 180px;
-}
-.productTitle{
-    grid-column:2/3;
-}
-.productRate{
-    grid-column:3/4;
-}
-.quantity{
-    grid-column:4/5;
-    display: flex;
+.productSpecs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 720px;
+  padding: 12px 0px;
+  background-color: #f5f7fa;
+  gap: 12px;
+  @include Large {
     width: 100%;
-    
+  }
 }
-.totalAmount{
-    width: 135px;
-    height: 40px;
-    background-color: #f5f7fa;
-    color: #6b6b6b;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   font-weight: 500;
+.tableHeading {
+  font-size: 12px;
+  font-weight: 600;
 }
-.buttonContainer{
-    display: flex;
-    padding:0px 15px;
+.productSpecsDetails {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 12px;
+  margin: 12px 0px;
+  align-items: center;
+  width: 720px;
+  @include Medium {
     width: 100%;
-    justify-content: space-between;
-    button{
-        border: none;
-        background-color: transparent;
-        font-size: 15px;
-        font-weight: 800;
+  }
+}
+.productImage {
+  grid-column: 1/2;
+  width: 180px;
+  @include Medium {
+    width: 100%;
+  }
+}
+.productTitle {
+  grid-column: 2/3;
+  @include Medium {
+    width: 100%;
+  }
+}
+.productRate {
+  grid-column: 3/4;
+  @include Medium {
+    width: 100%;
+  }
+}
+.quantity {
+  grid-column: 4/5;
+  display: flex;
+  width: 100%;
+  @include Medium {
+    width: 100%;
+  }
+}
+.quantityText {
+    @include Medium {
+        display: none;
     }
+}
+.totalAmount {
+  width: 135px;
+  height: 40px;
+  background-color: #f5f7fa;
+  color: #6b6b6b;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  @include Medium {
+    width: 80px;
+  }
+}
+.emptyMessage{
+  text-transform: capitalize;
+  font-size: 24px;
+  font-weight: 500;
+  height:400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(148, 120, 120);
+}
+.buttonContainer {
+  display: flex;
+  padding: 0px 15px;
+  width: 100%;
+  justify-content: space-between;
+  @include Medium {
+    width: 50%;
+    padding: 0px 5px;
+  }
+  button {
+    border: none;
+    background-color: transparent;
+    font-size: 15px;
+    font-weight: 800;
+  }
 }

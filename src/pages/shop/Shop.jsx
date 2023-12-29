@@ -120,6 +120,7 @@ const Shop = ({ cart, setCart }) => {
             ({ id, price, productTitle, backgroundImage, rating }) => {
               return (
                 <div
+                  className={classes.priceCardRoot}
                   onClick={(event) => {
                     navigate(`/product?id=${id}`);
                   }}

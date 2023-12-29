@@ -1,106 +1,139 @@
-.body{
-    display: flex;
-    margin:0;
+@import 'src/styles/breakpoints';
+
+.body {
+  display: flex;
+  margin: 0;
 }
-.sideBar{
-   width: 150px;
-    padding: 100px 40px;
-    max-width: 230px;
+.sideBar {
+  width: 150px;
+  padding: 100px 40px;
+  max-width: 230px;
+  background-color: #f5f7fa;
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: 576px) {
+    display: none;
+  }
+}
+.category {
+  list-style: none;
+  text-transform: capitalize;
+  margin-bottom: 50px;
+  color: #959595;
+  font-weight: 450;
+  li {
+    padding: 15px 0px 15px 20px;
+    &:hover {
+      transition: all 500ms ease 0s;
+      color: #fbb710;
+      cursor: pointer;
+    }
+  }
+}
+.title {
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #242424;
+  margin-bottom: 30px;
+}
+.brands {
+  list-style: none;
+  text-transform: capitalize;
+  color: #959595;
+  font-weight: 450;
+  .brandTYpes {
+    padding: 15px 0px 15px 20px;
+    &:hover {
+      transition: all 500ms ease 0s;
+      color: #fbb710;
+      cursor: pointer;
+    }
+  }
+}
+.showcaseArea {
+  padding: 100px 0px;
+  flex: 1;
+  padding: 30px;
+  @include Small {
+    width: calc(100% - 60px);
+  } 
+}
+.sortBySelection {
+  border: none;
+  background-color: #f5f7fa;
+
+  &:focus-visible {
+    outline: none;
+  }
+  option {
+    padding: 10px;
     background-color: #f5f7fa;
-    display: flex;
-    flex-direction: column;
-    
+  }
 }
-.category{
-    list-style: none;
-    text-transform: capitalize;
-    margin-bottom: 50px;
-    color: #959595;
-    font-weight: 450;
-    li{
-        padding: 15px 0px 15px 20px;
-        &:hover{
-            transition: all 500ms ease 0s;
-            color: #fbb710; 
-            cursor: pointer;
-        }
-    }
+.wrapper {
+  padding: 0px 15px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.title{
+.totalProducts {
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 400;
+  @include Large {
     font-size: 16px;
-    text-transform: capitalize;
-    color: #242424;
-    margin-bottom: 30px;
+  }
 }
-.brands{
-    list-style: none;
-    text-transform: capitalize;
-    color: #959595;
-    font-weight: 450;
-    .brandTYpes{
-        padding: 15px 0px 15px 20px;
-        &:hover{
-            transition: all 500ms ease 0s;
-            color: #fbb710; 
-            cursor: pointer;
-        }
+// where
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  a {
+    text-decoration: none;
+    color: #131212;
+    &:hover {
+      transition: all 500ms ease 0s;
+      color: #fab711;
     }
+  }
+  @include ExtraLarge {
+    justify-content: center;
+  }
 }
-.showcaseArea{
-    padding: 100px 0px;
-    flex: 1;
+
+// here
+.priceCardRoot {
+  min-width: 300px;
+  width: 100%;
+  max-width: 416px;
+  padding: 0px 15px;
 }
-.sortBySelection{
-    border: none;
-    background-color:#f5f7fa ;
-    &:focus-visible{
-        outline: none;
-    }
-    option{
-        padding: 10px;
-        background-color: #f5f7fa;
-        
-    }
+
+// there
+.productSortingBox {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
 }
-.wrapper{
-    padding: 0px 15px;
-    margin-bottom: 40px;
-    display: flex;
-    justify-content: space-between;
+.productSorting {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  color: #959595;
+  width: 203px;
+  background-color: #f5f7fa;
+  justify-content: space-around;
+  @include Large {
+  width: 150px;
+  label {
+    font-size: 14px;
+  }
+  }
 }
-.totalProducts{
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    font-size: 18px;
-    font-weight: 400;
+.selectedCategory {
+  color: #fbb710;
 }
-.products{
-    display: flex;
-    flex-wrap: wrap;
-    a {
-        text-decoration: none;
-        color: #131212;
-        &:hover {
-          transition: all 500ms ease 0s;
-          color: #fab711;
-        }
-      }
-}
-.productSortingBox{
-    display: flex;
-    flex: 1;
-    justify-content:flex-end;
-}
-.productSorting{
-    display: flex;
-    align-items: center;
-    margin-right: 86px;
-    height: 40px;
-    color: #959595;
-    width: 203px;
-    background-color:  #f5f7fa;
-    justify-content: space-around;
-}
-.selectedCategory{
-    color: #fbb710;
-}
+

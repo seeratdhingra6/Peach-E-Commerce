@@ -1,13 +1,21 @@
+@import 'src/styles/breakpoints';
+
 .root {
-  padding: 0px 15px;
   margin-bottom: 45px;
+  width: 100%;
+  max-width: 416px;
+  @include Medium{
+    max-width: 100%;
+  }
 }
+
 .wrapper {
   padding-left: 15px;
   width: 100%;
 }
+
 .productImage {
-  max-width: 416px;
+  width: 100%;
 }
 
 .content {

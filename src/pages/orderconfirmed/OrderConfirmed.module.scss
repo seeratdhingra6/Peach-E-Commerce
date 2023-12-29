@@ -1,13 +1,13 @@
+@import "src/styles/breakpoints";
+
 .body{
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    // background-color:#302c2f;
     background-color: #f9b690;
     background-image: linear-gradient(270deg, #f9b690 0%, #f3da9c 100%);
-    
-
+    min-height: 80vh;
 
 }
 .root{
@@ -41,7 +41,7 @@
 
 @keyframes slide {
     0% {
-        transform: translateX(-260%);
+        transform: translateX(-30vw);
     }
     
     100% {

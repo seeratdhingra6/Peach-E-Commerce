@@ -1,43 +1,49 @@
-.cartTotal{
-    width: 310px;
-    padding:20px;
-    background-color: #f5f7fa;
-    height: fit-content;
-    .heading{
-        margin-bottom: 30px;
-        font-size:18px;
-        font-weight: 500;
-    }    
-}
-.SubTotal{
-    display: flex;
-    justify-content: space-between;
+@import "src/styles/breakpoints";
+
+.cartTotal {
+  width: 310px;
+  padding: 20px;
+  background-color: #f5f7fa;
+  height: fit-content;
+  @include ExtraLarge {
+    width: calc(100% - 40px);
+    max-width: 100%;
+  }
+  .heading {
     margin-bottom: 30px;
+    font-size: 18px;
+    font-weight: 500;
+  }
 }
-.delievery{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
+.SubTotal {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
 }
-.total{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
+.delievery {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
 }
-.CheckOut{
-    margin-top: 48px;
-    width: 100%;
-    padding: 0px 7px;
-    height: 55px;
-    border: none;
-    font-size: 17px;
-    font-weight: 600;
-    background-color: #fbb710;
-    color:white;
-    &:hover{
-        transition: all 500ms ease 0s;
-        background-color: black;
-        color: white;
-        cursor: pointer;
-    }
+.total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.CheckOut {
+  margin-top: 48px;
+  width: 100%;
+  padding: 0px 7px;
+  height: 55px;
+  border: none;
+  font-size: 17px;
+  font-weight: 600;
+  background-color: #fbb710;
+  color: white;
+  &:hover {
+    transition: all 500ms ease 0s;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+  }
 }

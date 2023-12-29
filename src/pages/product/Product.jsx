@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import classes from "./Product.module.scss";
 import ProductsData from "../../data/home";
@@ -15,6 +15,10 @@ const Product = ({ cart, setCart, quantity, setQuantity }) => {
   const { price, productTitle, rating, backgroundImage, category } =
     ProductsData.find(({ id }) => id === Number(productId));
   const ratings = getArrayByNumber(rating);
+
+  useEffect(() => {
+    setQuantity(1);
+  }, []);
   return (
     <>
       <div className={classes.body}>
