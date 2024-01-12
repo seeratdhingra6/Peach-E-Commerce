@@ -10,7 +10,9 @@
   margin: auto;
   min-height: 85vh;
   @include Large {
-    width: calc(100vw - 200px);
+    width: calc(100vw - 30px);
+    padding: 0px;
+    margin: 15px;
   }
 }
 .wrapper {

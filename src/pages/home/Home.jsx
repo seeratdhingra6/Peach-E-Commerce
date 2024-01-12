@@ -2,7 +2,6 @@ import React from "react";
 import classes from "./Home.module.scss";
 import ProductCard from "../../components/ProductCard/ProductCard";
 const Home = () => {
-  //todo:hide the third column when below 1200px
   return (
     <div className={classes.body}>
       <div className={classes.column1}>

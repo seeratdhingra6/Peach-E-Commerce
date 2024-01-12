@@ -4,6 +4,7 @@ import classes from "./SideCard.module.scss";
 import logo from "../../images/Peach-logos_black.png";
 import { Link, useLocation } from "react-router-dom";
 import cx from "classnames";
+
 const SideCard = ({ cart }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const location = useLocation();
@@ -11,6 +12,17 @@ const SideCard = ({ cart }) => {
   const cartItems = Object.values(cart);
   let totalCartItems = 0;
   cartItems.forEach((cartItem) => (totalCartItems += cartItem));
+
+  if (isDrawerOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "scroll";
+  }
+
+  const closeDrawer = () => {
+    setIsDrawerOpen(false);
+  };
+
   return (
     <div className={classes.wrapper}>
       {!isDrawerOpen && (
@@ -40,7 +52,7 @@ const SideCard = ({ cart }) => {
             <div />
           </button>
         </div>
-        <Link to="/">
+        <Link onClick={closeDrawer} to="/">
           <img className={classes.brandLogo} src={logo}></img>
         </Link>
         <ul className={classes.navBar}>
@@ -50,7 +62,9 @@ const SideCard = ({ cart }) => {
             })}
           >
             <div className={classes.indicator} />
-            <Link to="/">Home</Link>
+            <Link onClick={closeDrawer} to="/">
+              Home
+            </Link>
           </li>
           <li
             className={cx(classes.listItem, {
@@ -58,7 +72,9 @@ const SideCard = ({ cart }) => {
             })}
           >
             <div className={classes.indicator} />
-            <Link to="/shop">Shop</Link>
+            <Link onClick={closeDrawer} to="/shop">
+              Shop
+            </Link>
           </li>
           <li
             className={cx(classes.listItem, {
@@ -66,7 +82,9 @@ const SideCard = ({ cart }) => {
             })}
           >
             <div className={classes.indicator} />
-            <Link to="/cart">Cart</Link>
+            <Link onClick={closeDrawer} to="/cart">
+              Cart
+            </Link>
           </li>
           <li
             className={cx(classes.listItem, {
@@ -74,7 +92,9 @@ const SideCard = ({ cart }) => {
             })}
           >
             <div className={classes.indicator} />
-            <Link to="/checkout">Checkout</Link>
+            <Link onClick={closeDrawer} to="/checkout">
+              Checkout
+            </Link>
           </li>
         </ul>
         <ul className={classes.serviceOptions}>
