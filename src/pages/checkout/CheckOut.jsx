@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import CheckoutBill from "../../components/checkoutForm/CheckoutBill";
 import classes from "./CheckOut.module.scss";
 import { useNavigate } from "react-router-dom";
-const CheckOut = ({ cart, onClickHandler }) => {
+import { CartContext } from "../../App";
+const CheckOut = ({ onClickHandler }) => {
   const navigate = useNavigate();
+  const { cart } = useContext(CartContext);
   return (
     <div className={classes.body}>
       <h1 className={classes.heading}>Checkout</h1>

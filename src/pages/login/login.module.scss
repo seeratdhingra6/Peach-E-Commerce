@@ -1,0 +1,54 @@
+@import 'src/styles/breakpoints';
+.root {
+  padding: 0px 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 90vh;
+  @include ExtraLarge {
+    padding: 40px 20px;
+    width: calc(100% - 40px);
+    max-width: 100%;
+    min-height: 80vh;
+  }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.input {
+    padding: 20px;
+    background-color: #f5f7fa;
+    border: none;
+    font-weight: 600;
+    &:focus-visible {
+      outline: 3px solid #80bdff;
+      box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+      cursor: pointer;
+    }
+}
+.buttonArea{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.submitButton {
+    margin-top: 18px;
+    width: 25%;
+    padding: 0px 7px;
+    height: 55px;
+    border: none;
+    font-size: 17px;
+    font-weight: 600;
+    background-color: #fbb710;
+    color: white;
+    &:hover {
+      transition: all 500ms ease 0s;
+      background-color: black;
+      color: white;
+      cursor: pointer;
+    }
+}
