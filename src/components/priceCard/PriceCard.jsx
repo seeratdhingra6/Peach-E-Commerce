@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import classes from "./PriceCard.module.scss";
 import Star from "../../assets/icons/Star";
 import { getArrayByNumber, updateCart } from "../../helpers/common";
 import Added from "../../assets/icons/Added";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../App";
 const PriceCard = ({
   productImage,
   price,
@@ -14,6 +16,8 @@ const PriceCard = ({
 }) => {
   const ratings = getArrayByNumber(rating);
   const [showStrip, setShowStrip] = useState(false);
+  const navigate = useNavigate();
+  const { user } = useContext(UserContext);
   return (
     <>
       <div className={classes.root}>
@@ -34,6 +38,9 @@ const PriceCard = ({
               className={classes.cart}
               onClick={(event) => {
                 event.stopPropagation();
+                if (!user) {
+                  navigate("/login");
+                }
                 updateCart(id, 1, cart, setCart);
                 setShowStrip(true);
                 setInterval(() => {

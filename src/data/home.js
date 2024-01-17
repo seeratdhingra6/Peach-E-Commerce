@@ -79,9 +79,8 @@ const ProductsData = [
   {
     id: 3,
     price: "318",
-    productTitle: "Modern Rocking Chair",
-    backgroundImage:
-      "https://preview.colorlib.com/theme/amado/img/bg-img/8.jpg.webp",
+    name: "Modern Rocking Chair",
+    image: "https://preview.colorlib.com/theme/amado/img/bg-img/8.jpg.webp",
     category: "chairs",
     time: 3000,
     rating: 5,
