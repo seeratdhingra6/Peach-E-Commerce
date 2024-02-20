@@ -1,28 +1,32 @@
 import React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PriceCard from "../../components/priceCard/PriceCard";
 import classes from "./Shop.module.scss";
 import productsData from "../../data/home";
 import { Link, useNavigate } from "react-router-dom";
-const categories = [
-  "chairs",
-  "beds",
-  "accesories",
-  "furniture",
-  "home deco",
-  "dressings",
-  "tables",
-];
-const brands = ["Amado", "Ikea", "Furniture Inc", "The Factory", "Art Deco"];
-const Shop = ({ cart, setCart }) => {
+import axios from "axios";
+import { useSelector } from "react-redux";
+
+const Shop = () => {
+  const [products, setProducts] = useState([]);
+  const cart = useSelector((state) => state.cart);
+  console.log("DEBUG CART", cart);
+  // to access data from cart and to push in products array through api
+  const categories = [...new Set(products.map((product) => product.category))];
+  useEffect(() => {
+    axios("http://localhost:3001/product/all")
+      .then((response) => {
+        setProducts(response.data.result);
+        console.log("DEBUG RESPONSE SHOP", response);
+      })
+      .catch(() => {});
+  }, []);
   const navigate = useNavigate();
-  const [activeCategory, setActiveCategory] = useState("chairs");
+  const [activeCategory, setActiveCategory] = useState("all");
   const [filter, setFilter] = useState("trending");
-  const [activeBrands, setActiveBrands] = useState([]);
-  const displayData = productsData.filter(({ category, brand }) => {
-    return activeBrands.length > 0
-      ? activeCategory === category && activeBrands.includes(brand)
-      : activeCategory === category;
+
+  const displayData = products.filter(({ category }) => {
+    return activeCategory !== "all" ? activeCategory === category : true;
   });
   if (filter === "newest") {
     displayData.sort((a, b) => {
@@ -42,23 +46,20 @@ const Shop = ({ cart, setCart }) => {
       }
     });
   }
-
-  const setBrands = (event, givenBrand) => {
-    if (event.target.checked) {
-      setActiveBrands([...activeBrands, givenBrand]);
-    } else {
-      const filteredBrands = activeBrands.filter(
-        (brand) => brand !== givenBrand
-      );
-      setActiveBrands(filteredBrands);
-    }
-  };
+  console.log("DEBUG displayData", displayData);
 
   return (
     <div className={classes.body}>
       <div className={classes.sideBar}>
         <ul className={classes.category}>
           <h5 className={classes.title}>categories</h5>
+          <li
+            onClick={() => setActiveCategory("all")}
+            className={classes.selectedCategory}
+            key={"all"}
+          >
+            All
+          </li>
           {categories.map((category) => {
             return activeCategory === category ? (
               <li
@@ -75,23 +76,6 @@ const Shop = ({ cart, setCart }) => {
             );
           })}
         </ul>
-        <div className={classes.brands}>
-          <h5 className={classes.title}>brands</h5>
-          {brands.map((brand) => {
-            return (
-              <div key={brand} className={classes.brandTYpes}>
-                <input
-                  onChange={(event) => setBrands(event, brand)}
-                  type="checkbox"
-                  id={brand}
-                  name={brand}
-                  checked={activeBrands.includes(brand)}
-                />
-                <label for={brand}>{brand}</label>
-              </div>
-            );
-          })}
-        </div>
       </div>
       <div className={classes.showcaseArea}>
         <div className={classes.wrapper}>
@@ -116,29 +100,25 @@ const Shop = ({ cart, setCart }) => {
           </div>
         </div>
         <div className={classes.products}>
-          {displayData.map(
-            ({ id, price, productTitle, backgroundImage, rating }) => {
-              return (
-                <div
-                  className={classes.priceCardRoot}
-                  onClick={(event) => {
-                    navigate(`/product?id=${id}`);
-                  }}
-                >
-                  <PriceCard
-                    key={id}
-                    price={price}
-                    name={productTitle}
-                    productImage={backgroundImage}
-                    rating={rating}
-                    id={id}
-                    cart={cart}
-                    setCart={setCart}
-                  />
-                </div>
-              );
-            }
-          )}
+          {displayData.map(({ _id, price, name, image, rating }) => {
+            return (
+              <div
+                className={classes.priceCardRoot}
+                onClick={(event) => {
+                  navigate(`/product?id=${_id}`);
+                }}
+              >
+                <PriceCard
+                  key={_id}
+                  price={price}
+                  name={name}
+                  productImage={image}
+                  rating={rating}
+                  id={_id}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

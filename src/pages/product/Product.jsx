@@ -1,38 +1,75 @@
-import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import classes from "./Product.module.scss";
 import ProductsData from "../../data/home";
-import { useState } from "react";
-import { getArrayByNumber, updateCart } from "../../helpers/common";
+import { getArrayByNumber } from "../../helpers/common";
 import Star from "../../assets/icons/Star";
 import UpArrow from "../../assets/icons/UpArrow";
 import Added from "../../assets/icons/Added";
-const Product = ({ cart, setCart, quantity, setQuantity }) => {
+import { useDispatch, useSelector } from "react-redux";
+import { updateCart } from "../../redux/actions";
+import axios from "axios";
+const Product = () => {
+  const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState(1);
   const [showStrip, setShowStrip] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const productId = queryParams.get("id");
-  const { price, productTitle, rating, backgroundImage, category } =
-    ProductsData.find(({ id }) => id === Number(productId));
+  const [product, setProduct] = useState({});
+  const { name, price, rating, description, category, image } = product;
   const ratings = getArrayByNumber(rating);
-
+  const authToken = useSelector((state) => state.auth.token);
   useEffect(() => {
-    setQuantity(1);
+    axios(`http://localhost:3001/product/${productId}`)
+      .then((response) => setProduct(response.data.result))
+      .catch(() => {});
   }, []);
+  const handleCart = () => {
+    if (!authToken) {
+      navigate("/login");
+    }
+    if (authToken) {
+      axios
+        .post(
+          "http://localhost:3001/cart/addItem",
+          {
+            productId,
+            quantity,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          }
+        )
+        .then((response) => {
+          console.log("DEBUG addcart", response);
+          dispatch(updateCart(productId, quantity));
+          setShowStrip(true);
+          setInterval(() => {
+            setShowStrip(false);
+          }, 3000);
+        })
+        .catch(() => {});
+    }
+  };
+  console.log(product);
   return (
     <>
       <div className={classes.body}>
         <h5 className={classes.breadCrumb}>
           HOME {`>`} {category} {`>`}{" "}
-          <span className={classes.activeCrumbTitle}>{productTitle}</span>
+          <span className={classes.activeCrumbTitle}>{name}</span>
         </h5>
         <div className={classes.root}>
-          <img className={classes.img} src={backgroundImage}></img>
+          <img className={classes.img} src={image}></img>
           <div className={classes.ProductContent}>
             <div className={classes.wrapper}>
               <div className={classes.line}></div>
               <h5 className={classes.heading}>${price}</h5>
-              <h1 className={classes.productTitle}>{productTitle}</h1>
+              <h1 className={classes.productTitle}>{name}</h1>
               <div className={classes.rating}>
                 <p>
                   {ratings.map(() => (
@@ -75,16 +112,7 @@ const Product = ({ cart, setCart, quantity, setQuantity }) => {
                 </span>
               </div>
             </div>
-            <button
-              onClick={(event) => {
-                updateCart(productId, quantity, cart, setCart);
-                setShowStrip(true);
-                setInterval(() => {
-                  setShowStrip(false);
-                }, 3000);
-              }}
-              className={classes.addToCart}
-            >
+            <button onClick={handleCart} className={classes.addToCart}>
               Add To Cart
             </button>
           </div>

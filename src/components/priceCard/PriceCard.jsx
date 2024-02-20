@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import classes from "./PriceCard.module.scss";
 import Star from "../../assets/icons/Star";
-import { getArrayByNumber, updateCart } from "../../helpers/common";
+import { getArrayByNumber } from "../../helpers/common";
 import Added from "../../assets/icons/Added";
-const PriceCard = ({
-  productImage,
-  price,
-  name,
-  rating,
-  id,
-  cart,
-  setCart,
-}) => {
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { updateCart } from "../../redux/actions";
+const PriceCard = ({ productImage, price, name, rating, id }) => {
+  const authToken = useSelector((state) => state.auth.token);
+  const navigate = useNavigate();
   const ratings = getArrayByNumber(rating);
   const [showStrip, setShowStrip] = useState(false);
+  const dispatch = useDispatch();
+
   return (
     <>
       <div className={classes.root}>
@@ -33,8 +32,11 @@ const PriceCard = ({
             <button
               className={classes.cart}
               onClick={(event) => {
+                if (!authToken) {
+                  navigate("/login");
+                }
                 event.stopPropagation();
-                updateCart(id, 1, cart, setCart);
+                dispatch(updateCart(id, 1));
                 setShowStrip(true);
                 setInterval(() => {
                   setShowStrip(false);

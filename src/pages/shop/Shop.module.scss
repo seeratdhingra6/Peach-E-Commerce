@@ -43,6 +43,9 @@
   font-weight: 450;
   .brandTYpes {
     padding: 15px 0px 15px 20px;
+    labeL{
+      margin-left: 4px;
+    }
     &:hover {
       transition: all 500ms ease 0s;
       color: #fbb710;
@@ -51,11 +54,12 @@
   }
 }
 .showcaseArea {
-  padding: 100px 0px;
+  padding: 100px 30px;
   flex: 1;
-  padding: 30px;
+  // padding: 30px;
   @include Small {
-    width: calc(100% - 60px);
+    padding: 0;
+    width: 100%
   } 
 }
 .sortBySelection {
@@ -97,6 +101,7 @@
     &:hover {
       transition: all 500ms ease 0s;
       color: #fab711;
+
     }
   }
   @include ExtraLarge {

@@ -2,7 +2,10 @@ import React from "react";
 import classes from "./Footer.module.scss";
 import logo from "../../images/Peach-logos_transparent.png";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Footer = () => {
+  const auth = useSelector((state) => state.auth);
+
   const currentYear = new Date().getFullYear();
   return (
     <div className={classes.root}>
@@ -28,10 +31,12 @@ const Footer = () => {
           <div className={classes.indicator} />
           <Link to="/cart">Cart</Link>
         </li>
-        <li className={classes.listItem}>
-          <div className={classes.indicator} />
-          <Link to="/checkout">Checkout</Link>
-        </li>
+        {auth.id && (
+          <li className={classes.listItem}>
+            <div className={classes.indicator} />
+            <Link to="/checkout">Checkout</Link>
+          </li>
+        )}
       </ul>
     </div>
   );

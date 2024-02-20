@@ -1,39 +1,57 @@
-import logo from "./logo.svg";
-import ProductCard from "./components/ProductCard/ProductCard";
 import classes from "./App.module.scss";
 import SideCard from "./components/SideCard/SideCard";
-import Home from "./pages/home/Home";
-import Shop from "./pages/shop/Shop";
-import Product from "./pages/product/Product";
-import Cart from "./pages/cart/Cart";
-import CheckOut from "./pages/checkout/CheckOut";
+import PathNames from "./components/pathnames/PathNames";
 import Footer from "./components/footer/Footer";
-import { useLocation } from "react-router-dom";
-import { useState } from "react";
-import OrderConfirmed from "./pages/orderconfirmed/OrderConfirmed";
-
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import axios from "axios";
+import { addProfile, updateCart, addToken } from "./redux/actions";
 function App() {
-  const [cart, setCart] = useState({});
-  const [quantity, setQuantity] = useState(1);
-  const { pathname } = useLocation();
-  console.log("DEBUG cart", cart);
+  const authToken = useSelector((state) => state.auth.token);
+  const store = useSelector((state) => state);
+  const dispatch = useDispatch();
+  // check if token available in local storage
+  const storageToken = localStorage.getItem("authToken");
+  console.log("DEBUG redux store app component line 12", store);
+
+  useEffect(() => {
+    if (storageToken) {
+      dispatch(addToken(storageToken));
+    }
+  }, [storageToken]);
+
+  useEffect(() => {
+    if (authToken) {
+      axios("http://localhost:3001/auth/profile", {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      }).then((response) => {
+        console.log("DEBUG RESPONSE", response);
+        const { firstName, lastName, email, id } = response.data.result;
+        dispatch(addProfile(firstName, lastName, email, id));
+      });
+
+      axios
+        .get("http://localhost:3001/cart/", {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        })
+        .then((response) => {
+          response.data.result.map(({ _id, quantity }) => {
+            dispatch(updateCart(_id, quantity));
+          });
+        });
+    }
+  }, [authToken]);
+
+  console.log(authToken);
   return (
     <div className={classes.App}>
       <div className={classes.root}>
-        <SideCard cart={cart} setCart={setCart} />
-        {pathname === "/" && <Home />}
-        {pathname === "/shop" && <Shop cart={cart} setCart={setCart} />}
-        {pathname === "/product" && (
-          <Product
-            quantity={quantity}
-            setQuantity={setQuantity}
-            cart={cart}
-            setCart={setCart}
-          />
-        )}
-        {pathname === "/cart" && <Cart cart={cart} setCart={setCart} />}
-        {pathname === "/checkout" && <CheckOut cart={cart} setCart={setCart} />}
-        {pathname === "/orderconfirmed" && <OrderConfirmed />}
+        <SideCard />
+        <PathNames />
       </div>
       <Footer />
     </div>

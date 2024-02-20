@@ -1,16 +1,15 @@
 @import 'src/styles/breakpoints';
 
 .body {
-  padding: 100px 30px;
+  padding: 110px 30px;
   display: flex;
   flex-direction: column;
-  min-height: 90vh;
+  min-height: 100vh;
   flex:1;
-  @include ExtraLarge {
-    padding: 40px 20px;
-    
-    // max-width: 100%;
-    // min-height: 80vh;
+
+  @include Large{
+    padding: 0px 30px;
+    justify-content: center;
   }
   
 }
@@ -26,6 +25,7 @@
     display: flex;
     flex:2;
     }
+   
 }
 .container{
   display: flex;
@@ -45,7 +45,7 @@
   width: 100%;
   gap: 15px;
 
-  input, textarea {
+  input {
     padding: 20px;
     background-color: #f5f7fa;
     border: none;
@@ -71,14 +71,38 @@
     width: 50%;
   }
 }
-.information {
+.buttonContainer{
   display: flex;
-  justify-content: space-between;
-  gap: 40px;
-  @include Medium {
-    gap: 20px;
+  width: 100%;
+  justify-content: center;
+  align-content: center;
+}
+.formSubmit {
+  margin-top: 24px;
+  width: 400px;
+  padding: 0px 7px;
+  height: 55px;
+  border: none;
+  font-size: 17px;
+  font-weight: 600;
+  background-color: #fbb710;
+  color: white;
+  &:hover {
+    transition: all 500ms ease 0s;
+    background-color: black;
+    color: white;
+    cursor: pointer;
   }
-  input {
-    width: 50%;
+  @include Medium{
+    width: 300px;
+  }
+  @include Small{
+    width: 200px;
+  }
+}
+.errorMessage{
+  color: red;
+  @include Small{
+    font-size: 18px;
   }
 }

@@ -5,9 +5,5 @@ const getArrayByNumber = (rating) => {
   }
   return ratings;
 };
-const updateCart = (productId, quantity, cart, setCart) => {
-  const newQuantity = cart[productId] ? cart[productId] + quantity : quantity;
-  setCart({ ...cart, [productId]: newQuantity });
-};
 
-export { getArrayByNumber, updateCart };
+export { getArrayByNumber };

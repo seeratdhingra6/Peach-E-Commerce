@@ -1,14 +1,23 @@
 @import "src/styles/breakpoints";
 
 .cartTotal {
-  width: 310px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   padding: 20px;
   background-color: #f5f7fa;
   height: fit-content;
   @include ExtraLarge {
-    width: calc(100% - 40px);
     max-width: 100%;
   }
+  @include Medium{
+    padding: 20px 50px;
+    flex:1;
+  }
+  @include Small{
+    padding: 30px 15px;
+  }
+  
   .heading {
     margin-bottom: 30px;
     font-size: 18px;
@@ -19,6 +28,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
+  
 }
 .delievery {
   display: flex;

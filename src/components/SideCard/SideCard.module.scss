@@ -167,3 +167,21 @@
   margin-left: 3px;
   color: #aab7c5;
 }
+.logoutButton {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  text-align: left;
+  text-decoration: none;
+  justify-content: flex-start;
+  text-transform: uppercase;
+  font-weight: 550;
+  font-size: 14px;
+}
+
+.logoutButton:hover {
+  background-color: none;
+
+}
+
